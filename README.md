@@ -1,5 +1,12 @@
 # Spiking Neural Network for MNIST Classification
 
+## Migration Notice
+
+This codebase has been migrated from **Python 2 to Python 3** and from **Brian v1 to Brian2**. The original implementation was published in 2015, and after 11 years, the migration modernizes the code for current Python environments and neuromorphic simulation frameworks. All functional behavior has been preserved to replicate the original experiment results.
+
+For detailed migration information, technical fixes, and compatibility notes, see [MIGRATION_NOTES.md](notes/MIGRATION_NOTES.md).
+
+---
 
 <img width="939" height="483" alt="Screenshot 2026-01-12 at 2 00 23 AM" src="https://github.com/user-attachments/assets/e45609ac-f20b-4cbb-8cfe-c52efc4e6774" />
 
@@ -85,12 +92,6 @@ python visualize_network_graph_activity.py
 python visualize_static_network_structure_3d.py
 ```
 Generate animated visualizations of network structure and spiking activity
-
-## Migration Notice
-
-This codebase has been migrated from **Python 2 to Python 3** and from **Brian v1 to Brian2**. The original implementation was published in 2015, and after 11 years, the migration modernizes the code for current Python environments and neuromorphic simulation frameworks. All functional behavior has been preserved to replicate the original experiment results.
-
-For detailed migration information, technical fixes, and compatibility notes, see [MIGRATION_NOTES.md](notes/MIGRATION_NOTES.md).
 
 ## Overview
 
