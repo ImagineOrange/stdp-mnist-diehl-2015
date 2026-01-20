@@ -750,32 +750,6 @@ pip install --upgrade brian2
 - The code sets backend to 'TkAgg' (line 10)
 - If unavailable, try 'Qt5Agg' or 'Agg'
 
-### Runtime Issues
-
-**"No such file or directory: MNIST data"**:
-- Download MNIST files from http://yann.lecun.com/exdb/mnist/
-- Place in `mnist_data/` directory
-- Or update `mnist_data_path` in [config.py](config.py)
-
-**"No such file or directory: ./activity/"**:
-- The `activity/` directory is now created automatically
-- If using an older version, manually create: `mkdir -p mnist_data/activity`
-
-**Very slow simulation**:
-- Brian2 compiles C++ code on first run (one-time cost)
-- Subsequent runs are faster
-- Reduce `num_examples` for quick tests
-
-**Network not spiking (produces 0 spikes)**:
-- Check initial weights are properly normalized (should sum to ~78.0 per neuron)
-- Increase `cfg.input_intensity` from 2.0 to higher values (e.g., 4.0)
-- Verify weight files exist in `mnist_data/weights/` or `mnist_data/random/`
-
-**Weights appear to be decreasing instead of learning**:
-- Ensure normalization is not being called multiple times per example
-- Verify STDP is enabled: `cfg.ee_STDP_on` should be `True` in training mode
-- Check that weight files are loading correctly from the configured paths
-
 ## Citation
 
 If you use this code, please cite the original paper:
