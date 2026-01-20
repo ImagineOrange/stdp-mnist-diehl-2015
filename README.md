@@ -10,6 +10,7 @@
 Implementation of the paper **"Unsupervised learning of digit recognition using spike-timing-dependent plasticity"** by Diehl & Cook (2015).
 
 [Paper Link](http://journal.frontiersin.org/article/10.3389/fncom.2015.00099/abstract)
+[Original Repo](https://github.com/peter-u-diehl/stdp-mnist)
 
 ## Quick Start
 
