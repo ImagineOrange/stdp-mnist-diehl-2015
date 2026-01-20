@@ -11,6 +11,43 @@ Implementation of the paper **"Unsupervised learning of digit recognition using 
 
 [Paper Link](http://journal.frontiersin.org/article/10.3389/fncom.2015.00099/abstract)
 
+## Quick Start
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd modernized_implementation
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+## Pretrained Weights Available
+
+This repository includes **pretrained weights** for a network trained on digits 0-4 (5 classes). You can immediately run evaluation and visualization without training:
+
+- **Trained weights**: `mnist_data/weights/` (XeAe.npy, theta_A.npy)
+- **Recorded activity**: `mnist_data/activity/` (spike counts from training and testing)
+- **Analysis figures**: `analysis_figures/` (evaluation plots, specificity analysis, comprehensive metrics)
+- **Visualization outputs**: `visualizations/figures/` (receptive fields, tuning curves, PCA trajectories, etc.)
+
+To run evaluation with pretrained weights:
+```bash
+python Diehl\&Cook_MNIST_evaluation.py
+```
+
+### Run Your Own Experiment
+
+You can train your own network and override all pre-saved weights, activity data, and figures. Modify experimental parameters in [config.py](config.py):
+
+- Change `mnist_classes` to train on different digit subsets (e.g., `[0, 1]` for binary, `None` for all 10 digits)
+- Set `test_mode = False` to train from scratch
+- Adjust `num_train_examples`, `num_epochs`, learning rates, and network size
+
+Training will overwrite the existing weights in `mnist_data/weights/` and activity in `mnist_data/activity/`. Running evaluation will regenerate analysis figures in `analysis_figures/`.
+
 ## Process Flow
 
 **Step 1: Generate Initial Weights**
@@ -56,7 +93,7 @@ For detailed migration information, technical fixes, and compatibility notes, se
 
 ## Overview
 
-This project implements an unsupervised learning spiking neural network (SNN) that learns to classify handwritten digits from the MNIST dataset using biologically-plausible learning mechanisms. Performance results and analysis visualizations are available in the `analysis_figures/` directory after running the evaluation script.
+This project implements the unsupervised learning spiking neural network (SNN) originally proposed by Diehl & Cook (2015). The network learns to classify handwritten digits from the MNIST dataset using biologically-plausible learning mechanisms including spike-timing-dependent plasticity (STDP) and lateral inhibition. Performance results and analysis visualizations are available in the `analysis_figures/` directory after running the evaluation script.
 
 ### Two-Phase Learning Process
 
@@ -411,34 +448,6 @@ weight_update_interval = 20          # Weight normalization
 save_connections_interval = 10000    # Weight checkpoint saving
 ```
 
-## Installation
-
-### Requirements
-
-- Python 3.x
-- Brian2 (neuromorphic simulator)
-- NumPy
-- Matplotlib
-- SciPy
-- tqdm (progress bars)
-
-### Install Dependencies
-
-```bash
-pip install brian2 numpy matplotlib scipy tqdm
-```
-
-### Download MNIST Dataset
-
-Download the MNIST dataset files from [Yann LeCun's website](http://yann.lecun.com/exdb/mnist/):
-
-- `train-images.idx3-ubyte`
-- `train-labels.idx1-ubyte`
-- `t10k-images.idx3-ubyte`
-- `t10k-labels.idx1-ubyte`
-
-Place these files in the repository root directory.
-
 ## Usage
 
 ### Current Configuration
@@ -532,7 +541,6 @@ diehl_2015_migration/
 │   └── visualize_static_network_structure_3d.py  # 3D network structure
 │
 ├── notes/                                   # Documentation
-│   ├── BIOLOGICAL_PLAUSIBILITY.md          # Biological plausibility discussion
 │   └── MIGRATION_NOTES.md                  # Python2→3, Brian1→2 migration notes
 │
 ├── mnist_data/                              # MNIST data directory
@@ -790,10 +798,11 @@ If you use this code, please cite the original paper:
 
 ## Author
 
-Code modifications by **Ethan Crouse**
+Code modifications by **Ethan Crouse** (2026)
+Contact: ethancrouse98@gmail.com
 
 **Peter U. Diehl**
-Original implementation (2014)
+Original implementation (2015)
 Contact: peter.u.diehl@gmail.com
 
 ## License
